@@ -84,3 +84,4 @@ for i in range(math.ceil(time)):
     time_bar += "/"
 print(cost_bar)
 print(time_bar)
+
