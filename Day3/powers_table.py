@@ -2,6 +2,8 @@
 #
 #   Date Written: 03/02/2023        By: Joseph P. Merten
 #   Day 3 - Powers Table
+#   This was interesting because I learned about the end= argument to the print() function.
+#       ref: https://docs.python.org/3/library/functions.html#print
 #
 ####################################################################################################
 #   imports
@@ -27,21 +29,25 @@ while (continue_flag.lower() == 'y'):
         count+=1
     print("-"*100+"\n")
     ####################################################################################################
-    #   Add a multiplication table
+    #   Add a multiplication table - first print the headings.
     print("Multiplication Table:\n----------------------")
     for i in range(limit):
-        print(f"\t{i+1}", end="")
+        print(f"\t{i+1}", end="")   #   Add 1 to i sinde range() is zero relative
     print("")
     for i in range(limit):
         print(f"\t=", end="")
     print("")
+    ####################################################################################################
+    #   first loop to get the first multiplicand.
     for i in range(limit):
         print(f"{i+1} |", end="")
+        ####################################################################################################
+        #   Second loop for the second multiplicand and then print the product.
         for j in range(limit):
             print(f"\t{(i+1)*(j+1)}", end="")
-        print("")
-    print("")
-    count = 1
+        print("")   # Extra print to start a new line since we're forcing print() on one line.
+    print("")   # Another extra print to start a new line since we're forcing print() on one line.
+    count = 1   # Reset our counter and see if we want to go again.
     continue_flag = input("\n\nContinue? (y/n): ")
 
 
