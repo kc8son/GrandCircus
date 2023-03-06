@@ -5,12 +5,12 @@ initialize count = 0
 initialize sum = 0
 
 for each value in values:
-    if value > 1:
+    if value > 0:
         add value to sum
         add 1 to count
 
-id count > 0:
-    print sum / cpupnt
+if count > 0:
+    print sum / count
 else:
     print "Nothing to process"
 
