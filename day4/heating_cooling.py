@@ -70,12 +70,12 @@ for i in range(9):
 ####################################################################################################
 #   Extended Challenge - test the conversion function a few times...
 #   Have to upgrade python to version 3.10 to use case  statement...
-print(temp_convert(0, 'c'))
-print(temp_convert(0, 'f'))
-print(temp_convert(0, 'k'))
-print(temp_convert(0, 'x'))
+print("Freezing - Celcius:", temp_convert(0, 'c'))
+print("Freezing - Farenheit:", temp_convert(0, 'f'))
+print("Freezing - Kelvin:", temp_convert(0, 'k'))
+print("Invalid unit test:", temp_convert(0, 'x'))
 
-print(temp_convert(100, 'c'))
-print(temp_convert(100, 'f'))
-print(temp_convert(100, 'k'))
-print(temp_convert(100, 'x'))
+print("Boiling - Celcius:", temp_convert(100, 'c'))
+print("Boiling - Farenheit:", temp_convert(100, 'f'))
+print("Boiling - Kelvin:", temp_convert(100, 'k'))
+print("Invalid unit test:", temp_convert(100, 'x'))
