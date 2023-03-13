@@ -5,27 +5,27 @@
 #
 # What will the application do?
 # 2 Points: Create 3 lists and fill them with student information—one with names values, one with favoritefoods values,
-#   one with favorite food values.
+#   one with favorite food values. DONE
 # 1 Point: Prompt the user to ask about a particular student by number. Convert the input to an integer.
-#   Use the integer as the index for the lists. Print the student’s names.
-# 1 Point: Ask the user which category to display: favoritefoods or Favorite food.
-#   Then display the relevant information.
-# 1 Point: Ask the user if they would like to learn about another student.
+#   Use the integer as the index for the lists. Print the student’s names. DONE
+# 1 Point: Ask the user which category to display: Hometown or Favorite food.
+#   Then display the relevant information. DONE
+# 1 Point: Ask the user if they would like to learn about another student. DONE
 #
 # Build Specifications:
 # 1 Point: Validate user number: Use an if statement to check if the number is out of range,
 #   i.e. either less than 1 or greater than the length of the lists.
-#   If so, display a friendly message and let the user try again.
+#   If so, display a friendly message and let the user try again. DONE
 # 1 Point: Validate category: Ask the user what information category to display: "favoritefoods" or "Favorite Food".
 #   Use an if statement to check that they entered either category names correctly.
-#   If they entered an incorrect category, display a friendly message and re-ask the question. (See hints below!)
-# 1 Point: List Length: Use the first list’s length property in your code instead of hardcoding it.
+#   If they entered an incorrect category, display a friendly message and re-ask the question. (See hints below!) DONE
+# 1 Point: List Length: Use the first list’s length property in your code instead of hardcoding it. DONE
 
 # Extended Challenges:
-# 1 Point: Provide an option where the user can see a list of all students.
-# 2 Points: Allow the user to search by student names (Good challenge but difficult!)
+# 1 Point: Provide an option where the user can see a list of all students. DONE
+# 2 Points: Allow the user to search by student names (Good challenge but difficult!) DONE
 # 1 Point: Category names: Allow uppercase and lowercase; allow portion of
-#   word such as "Food" instead of "Favorite Food"
+#   word such as "Food" instead of "Favorite Food" DONE
 #
 ####################################################################################################
 #   imports
@@ -81,6 +81,7 @@ def name_search():
         if (names[i].find(response) > 0):
             print(i+1, names[i])
     return 'n'
+
 def get_studentid2():
     """This function is an enhancement of get_studentid().  This implements two enhaancements:
     1 - Provide an option where the user can see a list of all students.
@@ -116,14 +117,15 @@ def ask_further_info(st_names):
 def ask_further_info2(st_names):
     """This function is an enhancement to the one above.  It will allow entry of a part of a category."""
     response = "xxxx"
-    while (('hometown'.find(response) < 0) and ('favorite food'.find(response) < 0)):
+    while (True):   # break out when we get a valid response...
         if ('hometown'.find(response) >= 0):
             return 'hometown'
         elif ('favorite food'.find(response) >= 0):
-            return 'favorite food'
+            return 'favoritefood'
         else:
+            if(response != "xxxx"):
+                print("Your entry must ne either 'hometowm' or 'favorite food'.  Please try again...")
             response = input(f"Do you want to know about {st_names}'s hometowm or favorite food? ").lower()
-    # return response
 
 ####################################################################################################
 #   lambdas
@@ -135,11 +137,12 @@ while check_student == 'y':
     student_id = get_studentid2()
     print(f"student number {student_id+1} is {names[student_id]}")
     category = ask_further_info2(names[student_id])
-    print(category)
     if (category == "favoritefood"):
         print(f"{names[student_id]}'s favorite food is: {favoritefoods[student_id]}")
-    else:
+    elif (category == "hometown"):
         print(f"{names[student_id]}'s hometown is: {hometowns[student_id]}")
+    else:
+        print(f"Got an invalid category - {category}")
     check_student = input(f"Do you want to know about another student? ").lower()
 
 
