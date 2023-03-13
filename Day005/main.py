@@ -47,3 +47,5 @@ print(plus_one_hundred(30))  # 130
 print(square_num(4))  # 16
 print(concatenate('hello'))  # - hello
 print(divide_by_three(9))  # 3.0
+
+print(help(apt_search1))
