@@ -11,7 +11,7 @@
 # 3 - Add in validation for the view menu. If a bad index is given or a name isn't
 #     present in the list of dictionaries, print an appropriate error message and retry that question. - DONE
 # 4 - Add validation for the hometown/favorite food portion of the view,
-#     if you get any other inputs, print an error message and try that question again.
+#     if you get any other inputs, print an error message and try that question again. - DONE
 #
 ####################################################################################################
 #   imports
