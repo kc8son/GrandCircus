@@ -136,3 +136,11 @@ grades2= {
 
 all_grades = grades1 | grades2
 print(all_grades)
+
+#   alternate tp .find()
+mystr = "Joe Merten"
+user_choice = input("Enter name: ")
+if user_choice.lower() in mystr.lower():
+    print("Fpund!!")
+else:
+    print("Not found...")
