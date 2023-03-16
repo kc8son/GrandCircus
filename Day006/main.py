@@ -78,8 +78,9 @@ def name_search():
     if not response:
         return 0
     for i in range(db_size):
-        if (names[i].find(response) > 0):
+        if (names[i].find(response) >= 0):
             print(i+1, names[i])
+            return i+1
     return 'n'
 
 def get_studentid2():
@@ -95,7 +96,7 @@ def get_studentid2():
         response = input("> ").lower()
         if response == 'a':
             list_students()
-            response = 0
+            # response = 0
         elif response == 'n':
             response = name_search()
         else:
