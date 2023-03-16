@@ -3,6 +3,8 @@
 #   Date Written: 03/09/2023        By: Joseph P. Merten
 #   STUDENT DATABASE
 #
+#   Date Modified: 03/15/2023 - Bug fixed in name search.
+#
 # What will the application do?
 # 2 Points: Create 3 lists and fill them with student information—one with names values, one with favoritefoods values,
 #   one with favorite food values. DONE
