@@ -10,7 +10,7 @@ import sys
 
 ####################################################################################################
 #   Variables
-menu_list = {
+menu_dict = {
     "Tomatoes":     2.50,
     "Bread":        1.25,
     "Mushrooms":    5.79,
@@ -19,23 +19,31 @@ menu_list = {
     "Eggs":         2.10,
     "Lettuce":      1.35
 }
+order_dict = {}
 
 ####################################################################################################
 #   functions
 def print_menu():
     i = 1
     print("Today's menu:\nPlease make a selection or type 'checkout'")
-    for key in menu_list.keys():
-        print(f"{i} - {key} - ${menu_list[key]:.2f}")
+    for key in menu_dict.keys():
+        print(f"{i} - {key} - ${menu_dict[key]:.2f}")
         i += 1
 
 def get_selection():
     resonse = input("> ")
     #   Test 1 - check for numeric entry
-    if resonse.isnumeric() and 0<
+    if resonse.isnumeric():
+        iresponse = int(resonse)
+        if 0 < iresponse <= len(menu_dict):
+            if menu_dict[iresponse] in order_dict:
+                order_dict[menu_dict[iresponse]] += 1
+            else:
+                order_dict[menu_dict[iresponse]] = 1
+
     print(x)
     #   Test 2 - scan for the full name
-    #   Test 3 - scan for partiao name.
+    #   Test 3 - scan for partial name.
 
 ####################################################################################################
 #   lambdas
