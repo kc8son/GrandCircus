@@ -21,7 +21,7 @@ class Circle():
     def ç(self):
         return math.pi * self.radius * self.radius
     def grow(self):
-        self.radius += 1
+        self.radius *= 2
     def get_radius(self):
         return self.radius
 
@@ -56,11 +56,12 @@ def get_grow_flag(my_circle):
     "This determines if we want to grow the circle another unit larger."
     my_resp = 'x'
     while my_resp != 'n' and my_resp != 'y':
-        my_resp = input("Would you like your circle to grow?\n > ")
+        my_resp = input("Would you like your circle to grow?\n> ")
     if my_resp == 'y':
         print("Stand by while your circle magically grows")
         my_circle.grow()
     elif my_resp == "n":
+        print(f"The last radius of your circle was: {my_circle.get_radius()}")
         print("Goodbye")
     else:
         print("Something is wrong...")
