@@ -18,7 +18,7 @@ class Circle():
         return 2 * self.radius
     def calculate_circumference(self):
         return 2 * math.pi * self.radius
-    def ç(self):
+    def calculate_area(self):
         return math.pi * self.radius * self.radius
     def grow(self):
         self.radius *= 2
@@ -51,7 +51,7 @@ def output_values(my_circle):
     """This outputs our calculations for the circle."""
     print(f"Diameter: {my_circle.calculate_diameter()}")
     print(f"Circumference: {my_circle.calculate_circumference()}")
-    print(f"Area: {my_circle.calculate_circumference()}")
+    print(f"Area: {my_circle.calculate_area()}")
 def get_grow_flag(my_circle):
     "This determines if we want to grow the circle another unit larger."
     my_resp = 'x'
