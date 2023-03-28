@@ -1,36 +1,21 @@
 ####################################################################################################
 #
 #   Date Written: 03/27/2023        By: Joseph P. Merten
-#   Day 13:
+#   Day 13:Checkers Game - Imports and NumPy Intro
 #
 ####################################################################################################
 #   imports
 import pdb
 import sys
 import math
+import checkers
 
 ####################################################################################################
 #   Variables
+board_size = 0
 
 ####################################################################################################
 #   Functions
-
-####################################################################################################
-#   Classes
-class Validator():
-####################################################################################################
-#
-#   Date Written: 03/22/2023        By: Joseph P. Merten
-#   Day 10: Circle Challenge - Python OOP: Classes
-#
-#   Date Modified: 03/23/2023       By: Joseph P. Merten
-#   Added a validator class for the extended challenge.
-#
-####################################################################################################
-#   imports
-import pdb
-import sys
-import math
 
 ####################################################################################################
 #   Classes
@@ -43,22 +28,29 @@ class Validator():
             if my_resp != 'n' and my_resp != 'y':
                 print("Invalid response, please enter 'y' or 'n'...")
         return my_resp
+    def validate_int(my_prompt, min, max):
+        """This method will display a message and validate that the response is an
+        integer within the boundaries specified by min & max"""
+        my_resp = min - 5   #force untrue...
+        while not min <= my_resp <= max:
+            print(my_prompt)
+            my_resp = input()
+            try:
+                my_resp = int(my_resp)
+            except:
+                my_resp = min - 5
+            if not min <= my_resp <= max:
+                print("Invalid entry, pleae try again...")
+        return my_resp
 
 ####################################################################################################
 #   Lambdas
 
 ####################################################################################################
 #   Main code
-print("Welcome to the circle Tester")
-# g_circle = Circle(input_radius())
-g_circle = Circle(Validator.validate_radius())
-while grow_flag.lower() == 'y':
-    output_values(g_circle)
-    # grow_flag = get_grow_flag(g_circle)
-    grow_flag = Validator.validate_yn()
-    if grow_flag == 'y':
-        print("Stand by while your circle magically grows")
-        g_circle.grow()
-    else:
-        print(f"The last radius of your circle was: {g_circle.get_radius()}")
-        print("Goodbye")
+print("Welcome to GC checkers...")
+board_size = int(Validator.validate_int("Please enter a board size betwee 2 and 64", 2, 64))
+checker_board = checkers.build_board(board_size)
+print(checker_board)
+g_counts = checkers.get_count(checker_board) # checkers.get_count(checker_board):
+print(g_counts)
