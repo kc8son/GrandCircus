@@ -3,6 +3,22 @@
 #   Date Written: 03/27/2023        By: Joseph P. Merten
 #   Day 13:Checkers Game - Imports and NumPy Intro
 #
+#   What will the application do?
+# DONE - 1 Point: The application prompts the user to enter a square board size between minimum of 4 and maximum of 16.
+# The application prints out a random board where each cell is either empty or contains a red or black checker.
+#
+# Build Specifications:
+# DONE - 1 point: This app must use two files, a main (called main.py) and a second one called checkers.py containing a function for generating a game board.
+# Specifications for the checkers.py file:
+# 1 point: The checkers.py file must import only the items from the numpy library required, using the “from” import construct.
+# DONE - 1 point: The checkers.py file must contain a function called build_board which takes a parameter representing the size of the board; e.g. if 3 is passed in, the function will generate a 3x3 board. The function will then use numpy to populate each cell of the board randomly with one of the following strings: ‘Empty’, ‘Red’, ‘Black’. The function will then return the newly created board.
+# DONE - 1 point: The checkers.py file must contain a function called get_count which takes two parameters: A board and a string of either Empty, Red, or Black. It will return how many of that item exists in the board.
+# 1 point: The checkers.py file must check if it’s running as a main, and if so print out a message stating the file is not intended to be run as a main.
+# Specifications for the main.py file:
+# 1 point: The main.py file must import the entire checkers library.
+# 1 point: The code must check if it’s running as main, and if so, call a function called game containing the main functionality, described next.
+# 2 point: The game function will ask the user for the size of the board and will call the build_board function. It will then print out the full board (you can just print the variable out; no need for extra formatting). It will next print out how many empty cells, how many red cells, and how many black cells are in the board using a function from your checkers.py file.
+#
 ####################################################################################################
 #   imports
 import pdb
@@ -40,7 +56,7 @@ class Validator():
             except:
                 my_resp = min - 5
             if not min <= my_resp <= max:
-                print("Invalid entry, pleae try again...")
+                print("Invalid entry, please try again...")
         return my_resp
 
 ####################################################################################################
@@ -49,8 +65,16 @@ class Validator():
 ####################################################################################################
 #   Main code
 print("Welcome to GC checkers...")
-board_size = int(Validator.validate_int("Please enter a board size betwee 2 and 64", 2, 64))
+#   Get a valid board size between 4 and 64
+board_size = int(Validator.validate_int("Please enter a board size betwee 4 and 64", 4, 64))
+#   generate the checker board
 checker_board = checkers.build_board(board_size)
+#   print the checker board
 print(checker_board)
-g_counts = checkers.get_count(checker_board) # checkers.get_count(checker_board):
+#   Get the counts for each color.
+print(" The count of Red: ", checkers.get_count(checker_board, "red") )
+print(" The count of Black: ", checkers.get_count(checker_board, "black") )
+print(" The count of Empty: ", checkers.get_count(checker_board, "empty") )
+#   get the counts in a smater way
+g_counts = checkers.smart_count(checker_board) # checkers.get_count(checker_board):
 print(g_counts)

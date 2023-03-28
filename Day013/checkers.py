@@ -15,7 +15,16 @@ def build_board(board_size):
     my_board = np.random.choice(["Red", "Black", "Empty"], (board_size, board_size))
     return my_board
 
-def get_count(my_board):
+def get_count(my_board, cell_val):
+    """This function will count how many positions for a specific color there are."""
+    cell_counts = 0
+    for row in my_board:
+        for cell in row:
+            if cell.lower() == cell_val.lower():
+                cell_counts += 1
+    return cell_counts
+
+def smart_count(my_board):
     """This function will count how many positions for each color there are."""
     cell_counts = {}
     for row in my_board:
