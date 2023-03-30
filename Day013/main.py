@@ -48,9 +48,9 @@ def game():
         #   get the counts in a smarer way
         g_counts = checkers.smart_count(checker_board)  # checkers.get_count(checker_board):
         print(sorted(g_counts.items()))
-        # print("pivoted board")
+        print("pivoted board")
         # pd_checker_board = pd.DataFrame(checker_board)
-        # print(pd_checker_board)
+        print(checker_board.transpose())
         resize_flag = Validator.validate_yn("Do you want to resize the board? (y/n)\n> ")
 
 ####################################################################################################
