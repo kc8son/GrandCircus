@@ -2,17 +2,19 @@
 #
 #   Date Written: 03/27/2023        By: Joseph P. Merten
 #   Day 13:Checkers Game - Imports and NumPy Intro
+#   use transpose.
 #
 ####################################################################################################
 #   imports...
-# from numpy import empty
-import numpy as np
+from numpy import random
+# import numpy as np
 
 
 #   Functions
 def build_board(board_size):
     """This function will build a 2 dimensional board of the specified size."""
-    my_board = np.random.choice(["Red", "Black", "Empty"], (board_size, board_size))
+    my_board = random.choice(["Red", "Black", "Empty"], (board_size, board_size))
+    my_board = random.choice(["Red", "Black", "Empty"], (board_size, board_size))
     return my_board
 
 def get_count(my_board, cell_val):
