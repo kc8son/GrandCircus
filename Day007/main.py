@@ -39,12 +39,22 @@ def list_names(students):
     while True:
         for i in range(len(students)):
             print(f'{i+1}\t{students[i]["name"]}')
-        student_index = int(input(f"Which student would you like to learn more about? Enter a number 1-{len(students)}:"))
-        if 1 <= student_index <= len(students):
-            ask_further_info2(student_index-1)
-            break
-        else:
-            print("I'm sorry, but that was an invalid response, please try again...")
+        my_resp = input(f"Which student would you like to learn more about? Enter a number 1-{len(students)} or part of a name: ")
+        try:
+            student_index = int(my_resp)    # If this fails, search by name in the except clause
+            if 1 <= student_index <= len(students):
+                ask_further_info2(student_index-1)
+                break
+            else:   # we have an integer, but it is out of bounds
+                print("I'm sorry, but that was an invalid response, please try again...")
+        except: # try to search by name
+            i = 1
+            for student in students:
+                if my_resp.lower() in student["name"].lower():
+                    ask_further_info2(i-1)
+                    return
+                i += 1
+            print("Name not found... try again...")
 
 
 def get_new_student():
