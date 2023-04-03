@@ -1,0 +1,9 @@
+Get category
+display inventory
+ask if compare
+    select car, add to compare list & remove from inventory list
+    get category
+    display inventory
+    select car
+    display ccomparision
+   
