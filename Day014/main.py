@@ -20,11 +20,11 @@ def lets_play_cards():
     # print(check_straight("sa", "sk", "sq"))
     # print(check_straight("s10", "sj", "sq"))
 
-    print(check_3ofa_kind("s5", "s5", "s5"))
-    print(check_3ofa_kind("sq", "sq", "sq"))
-    print(check_3ofa_kind("sa", "sa", "sa"))
-    print(check_3ofa_kind("sa", "sq", "sq"))
-    print(check_3ofa_kind("sq", "sq", "sa"))
+    # print(check_3ofa_kind("s5", "s5", "s5"))
+    # print(check_3ofa_kind("sq", "sq", "sq"))
+    # print(check_3ofa_kind("sa", "sa", "sa"))
+    # print(check_3ofa_kind("sa", "sq", "sq"))
+    # print(check_3ofa_kind("sq", "sq", "sa"))
 
     # print(check_royal_flush("sa", "sq", "sk"))
     # print(check_royal_flush("sq", "sq", "sa"))
