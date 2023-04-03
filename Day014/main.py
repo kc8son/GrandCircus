@@ -1,9 +1,8 @@
 ####################################################################################################
 #
 #   Date Written: 03/27/2023        By: Joseph P. Merten
-#   Day 14:
+#   Day 14: Poker-Spades Game - Unit Testing Practice
 #
-
 ####################################################################################################
 #   imports
 import pdb
@@ -17,20 +16,33 @@ cards = ('S2','S3','S4','S5','S6','S7','S8','S9','S10','SJ','SQ','SK','SA')
 ####################################################################################################
 #   Functions
 def lets_play_cards():
-    # for card in cards:
-    #     get_rank(card)
-    # print(check_straight("s8", "sj", "s4"))
     # print(check_straight("s3", "s2", "s1"))
     # print(check_straight("sa", "sk", "sq"))
     # print(check_straight("s10", "sj", "sq"))
-    # print(check_3ofa_kind("s5", "s5", "s5"))
-    # print(check_3ofa_kind("sq", "sq", "sq"))
-    # print(check_3ofa_kind("sa", "sa", "sa"))
-    # print(check_3ofa_kind("sa", "sq", "sq"))
-    # print(check_3ofa_kind("sq", "sq", "sa"))
-    print(check_royal_flush("sa", "sq", "sk"))
-    print(check_royal_flush("sq", "sq", "sa")) # bug here!
-    print(check_royal_flush("sq", "sk", "sj"))
+
+    print(check_3ofa_kind("s5", "s5", "s5"))
+    print(check_3ofa_kind("sq", "sq", "sq"))
+    print(check_3ofa_kind("sa", "sa", "sa"))
+    print(check_3ofa_kind("sa", "sq", "sq"))
+    print(check_3ofa_kind("sq", "sq", "sa"))
+
+    # print(check_royal_flush("sa", "sq", "sk"))
+    # print(check_royal_flush("sq", "sq", "sa"))
+    # print(check_royal_flush("sq", "sk", "sj"))
+
+    # print(play_cards("sa", "sq", "sk", "sq", "sk", "sj")) # test straights
+    # print(play_cards("sq", "sk", "sj", "sa", "sq", "sk"))
+    # print(play_cards("sa", "sq", "sk", "sa", "sq", "sk"))
+    #
+    # print(play_cards("sa", "sq", "sk", "s5", "s5", "s5")) # Test 3 of a kind
+    # print(play_cards("s5", "s5", "s5", "sa", "sq", "sk"))
+    # print(play_cards("s5", "s5", "s5", "s5", "s5", "s5"))
+    #
+    # print(play_cards("s3", "s2", "s1", "s10", "sj", "sq")) # straight
+    # print(play_cards("s10", "sj", "sq", "s3", "s2", "s1"))
+    # print(play_cards("s3", "s2", "s1", "s3", "s2", "s1"))
+
+    print("--- Nothing to do here - it's all esting")
 
 
 def get_rank(card):
@@ -65,7 +77,6 @@ def check_straight(card1, card2, card3):
         return my_cards[2]
     else:
         return 0
-
 def check_3ofa_kind(card1, card2, card3):
     """If the three cards passed in are all the same, return the value. Otherwise return 0. For example,
     check_3ofa_kind('S9', 'S9', 'S9') would return 9. check_3ofa_kind('S2', 'S4', 'S2') would return 0."""
@@ -89,7 +100,27 @@ def play_cards(left1, left2, left3, right1, right2, right3):
         If neither win (a draw), it returns 0.
         If right wins, it returns 1.
         """
-    pass
+    left_scores = [
+        check_3ofa_kind(left1, left2, left3),
+        check_straight(left1, left2, left3),
+        check_royal_flush(left1, left2, left3)
+    ]
+    right_scores = [
+        check_3ofa_kind(right1, right2, right3),
+        check_straight(right1, right2, right3),
+        check_royal_flush(right1, right2, right3)
+    ]
+    # print(left_scores)
+    # print(right_scores)
+    # mleft = max(left_scores)
+    # mright = max(right_scores)
+    # print(f"Left: {mleft}\tRight: {mright}")
+    if max(left_scores) > max(right_scores):
+        return -1
+    elif max(left_scores) < max(right_scores):
+        return 1
+    else:
+        return 0
 
 
 ####################################################################################################

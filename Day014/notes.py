@@ -32,3 +32,6 @@ class MyTestCase(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+python -m unittest main_test.py

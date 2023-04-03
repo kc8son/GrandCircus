@@ -48,6 +48,22 @@ class Validator:
             if my_resp != 'b' and my_resp != 't':
                 print("Invalid response, please enter 'b' or 't'...")
         return my_resp
+
+    def validate_int(my_prompt, min, max):
+        """This method will display a message and validate that the response is an
+        integer within the boundaries specified by min & max"""
+        my_resp = min - 5   #force untrue...
+        while not min <= my_resp <= max:
+            print(my_prompt)
+            my_resp = input()
+            try:
+                my_resp = int(my_resp)
+            except:
+                my_resp = min - 5
+            if not min <= my_resp <= max:
+                print("Invalid entry, please try again...")
+        return my_resp
+
     def validate_yn(my_prompt):
         "This METHOD determines if we want to grow the circle larger."
         my_resp = 'x'
