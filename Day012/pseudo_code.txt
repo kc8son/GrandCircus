@@ -6,4 +6,3 @@ ask if compare
     display inventory
     select car
     display ccomparision
-   

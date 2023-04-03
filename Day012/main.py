@@ -25,6 +25,7 @@ class Vehicle:
     def make_noise(self):
         print("Beep beep!")
 
+
 class Truck(Vehicle):
     def __init__(self, make, miles, price):
         Vehicle.__init__(self, make, miles, price)
@@ -32,12 +33,15 @@ class Truck(Vehicle):
     def load_cargo(self):
         print("Loading the truck bed")
         self.cargo = True
+
+
 class Motorcycle(Vehicle):
     def __init__(self, make, miles, price, top_speed):
         Vehicle.__init__(self, make, miles, price)
         self.top_speed = top_speed
-    def make_noise():
+    def make_noise(self):
         print("Vroom vroom!")
+
 
 class Validator:
     def validate_tb():
@@ -76,12 +80,18 @@ class Validator:
     def validate_int(my_prompt, min, max):
         """This method will display a message and validate that the response is an
         integer within the boundaries specified by min & max"""
-        pass
+        while True:
+            my_resp = input(my_prompt)
+            if my_resp.isnumeric():
+                if min<=int(my_resp)<=max:
+                    return int(my_resp)
+            print(f"Invalid response...  Expecting an integer between {min} and {max}, please try again...")
+
 
 ####################################################################################################
 #   Variables
 compare_flag = 'l' # initial value = l for list
-compare_list = []
+vehicles_to_compare = []
 truck_list = [
     Truck("Toyota", 100000, 55000.00),
     Truck("Chevy", 110000, 44000.00),
@@ -100,14 +110,20 @@ bike_list = [
 #   Functions
 def add_vehicle_to_compare(my_vehicle_list):
     """This function asks the use which vehicle to add to the compare list and removes it from the source list."""
-    my_resp = Validator.validate_int(f"Which vehicle would you like to add to the compare? (1-{len(my_vehicle_list)}\n> ", 1, len(my_vehicle_list))
-    print(my_vehicle_list[my_resp])
-    compare_list.append(my_vehicle_list[my_resp]-1)
+    my_resp = Validator.validate_int(f"Which vehicle would you like to add to the compare? (1-{len(my_vehicle_list)})\n> ", 1, len(my_vehicle_list))
+    print(my_vehicle_list[my_resp-1])
+    vehicles_to_compare.append(my_vehicle_list[my_resp-1])
     del my_vehicle_list[my_resp-1]
+    print("-"*80)
+    print(my_vehicle_list)
+    print(vehicles_to_compare)
+    print("-"*80)
+
 
 def buy_vehicle():
     print("Which vehicle would you like to purchase?")
-    print_vehicles(compare_list)
+    print_vehicles(vehicles_to_compare)
+
 
 def print_vehicles(my_vehicle_list):
     """This function will print a vehicle lisy.  It automatically decides if the list is
@@ -121,24 +137,34 @@ def print_vehicles(my_vehicle_list):
             f_string = f"{i}: {my_vehicle.make}: with {my_vehicle.miles:,.0f} miles costs ${my_vehicle.price:,.2f}"
         print(f_string)
         i += 1
-        get_compare(my_vehicle_list)
+
 
 def get_compare(my_vehicle_list, compare_flag):
     if compare_flag == 'y': # We already have a first vehicle to compare...
         add_vehicle_to_compare(my_vehicle_list)
+        return 'y'
     else:
         compare_flag = Validator.validate_yn("Would you like to compare one of these vehicles toady? (y/n)\n> ").lower()
         if compare_flag == 'n':
             return 'n'
         else:
-           add_vehicle_to_compare(my_vehicle_list)
-    # Testing...
-    print("---=== truck_list ===---")
-    print(truck_list)
-    print("---=== bike_list ===---")
-    print(compare_list)
-    print("---=== bike_list ===---")
-    print(compare_list)
+            add_vehicle_to_compare(my_vehicle_list)
+            return 'y'
+    # # Testing...
+    # print("---=== truck_list ===---")
+    # print(truck_list)
+    # print("---=== bike_list ===---")
+    # print(vehicles_to_compare)
+    # print("---=== bike_list ===---")
+    # print(bike_list)
+
+
+def do_compare():
+    """This function does the comparison from vehicles_to_compare."""
+    print("Hre are your vehicles to compare:")
+    for vehicle in vehicles_to_compare:
+        print(f"\t- {vehicle.make}: with {vehicle.miles:,.0f} costs ${vehicle.price:,.2f}")
+        vehicle.make_noise()
 
 ####################################################################################################
 #   Lambdas
@@ -146,15 +172,34 @@ def get_compare(my_vehicle_list, compare_flag):
 ####################################################################################################
 #   Main code
 print("Hello\nWelcome to GC bikes & trucks!")
-while compare_flag in 'y l':
+#   List trucks or bikes...
+choice = Validator.validate_tb()
+if choice == 't':
+    comp_list = truck_list
+    print_vehicles(truck_list)
+elif choice == 'b':
+    comp_list = bike_list
+    print_vehicles(bike_list)
+    #   Does the user want a comparison?
+compare_flag = get_compare(comp_list, compare_flag).lower()
+if compare_flag == 'y':
+    #   They want a comparison - bike or truck?
     choice = Validator.validate_tb()
     if choice == 't':
-        print_vehicles(truck_list, compare_flag)
+        comp_list = truck_list
+        print_vehicles(truck_list)
     elif choice == 'b':
-        print_vehicles(bike_list, compare_flag)
-print(compare_flag)
+        comp_list = bike_list
+        print_vehicles(bike_list)
+    compare_flag = get_compare(comp_list, compare_flag).lower()
+    do_compare()
+print("Thank you for visiing GC bikes & trucks!")
+
+
+
+
 # if compare_flag == y:
 #     pass
 # else:
-#     choice = Validator.validate_num("Would you like to buy this vehicle?\n> ", 1, len(compare_list))
+#     choice = Validator.validate_num("Would you like to buy this vehicle?\n> ", 1, len(vehicles_to_compare))
 #     print("Thanks for your purchase...")
