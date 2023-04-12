@@ -76,7 +76,7 @@ def name_search():
     The user may choose a name listed, or enter an empty string to try searching again.
     The function will return the student id found, or possibly 0 if none are found and the user
     decides not to try another string."""
-    response = input("Please enter a partial name to search for: ")
+    response = input("Please enter a partial name to search for: ").lower()
     if not response:
         return 0
     for i in range(db_size):
