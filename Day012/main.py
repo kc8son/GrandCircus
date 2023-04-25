@@ -5,6 +5,9 @@
 #   Python OOP: Inheritance
 #   Objectives: Inheritance, Parent Classes, Derived Classes
 #
+#   Date Modified: 04/24/2023       By: Joseph P. Merten
+#   Removed some debugging code.
+#
 ####################################################################################################
 #   imports
 import pdb
@@ -111,13 +114,13 @@ bike_list = [
 def add_vehicle_to_compare(my_vehicle_list):
     """This function asks the use which vehicle to add to the compare list and removes it from the source list."""
     my_resp = Validator.validate_int(f"Which vehicle would you like to add to the compare? (1-{len(my_vehicle_list)})\n> ", 1, len(my_vehicle_list))
-    print(my_vehicle_list[my_resp-1])
+    # print(my_vehicle_list[my_resp-1])
     vehicles_to_compare.append(my_vehicle_list[my_resp-1])
     del my_vehicle_list[my_resp-1]
-    print("-"*80)
-    print(my_vehicle_list)
-    print(vehicles_to_compare)
-    print("-"*80)
+    # print("-"*80)
+    # print(my_vehicle_list)
+    # print(vehicles_to_compare)
+    # print("-"*80)
 
 
 def buy_vehicle():
