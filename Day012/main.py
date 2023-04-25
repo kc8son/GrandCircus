@@ -20,7 +20,7 @@ class Vehicle:
     def __init__(self, make, miles, price):
         self.make = make
         self.miles = miles
-        self .price = price
+        self.price = price
         self.engine_on = False
     def engine_on(self):
         self.engine_on = True
