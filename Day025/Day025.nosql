@@ -77,6 +77,55 @@ db.people.find(
     { email: /.edu$/},
 	{ email: true}
 )
-	
+
+
+Extended Challenges:
+========================
+Count all people with at least one child under age four. (69)
+////	This is the hardrst of the three!!
+////	From this article: https://stackoverflow.com/questions/23553922/mongodb-find-inside-sub-array
+db.people.find({
+   children:{
+      $elemMatch:{
+         age:{
+            $lt:4
+         }
+      }
+   }
+})
+
+List people who have no children. (43)
+db.people.find( 
+	{ children: { $exists: true, $size: 0} }
+)
+/////  $exists doesn't work since there's an empty list
+db.people.find( 
+	{ children: { $exists: false}}
+)
+
+
+List people who have at least one child. (157)
+db.people.find( 
+	{ children: { $exists: true, $not: {$size: 0} } })
+
+
+
+
+
+
+	---notes---
 "^xxx" - begins with
 "xxx$" - ends with
+
+{ $match: { language: { $exists: true}}}
+
+
+db.collection1.find({ age: { $gt: 30 } }).forEach(function(doc) {
+  db.collection2.insert(doc);
+});
+
+
+db.collection1.find({ age: { $gt: 30 } }).forEach(function(doc) {
+  db.collection2.insert(doc);
+});
+
