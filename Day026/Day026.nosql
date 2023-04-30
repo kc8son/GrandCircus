@@ -1,10 +1,84 @@
-//	Joe Merten - Homework assignment - People Pt.1 (MongoDB Queries)
+//	Joe Merten - Homework assignment - People Pt.2 (MongoDB Queries)
 
 In people collection
  1 - Add a person to the collection. You pick the data, but they should have an empty array for children.
+ db.people.insert(
+	{
+	  first_name: 'Worowak',
+	  last_name: 'Sapawak',
+	  email: 'WS@nowhere.com',
+	  gender: 'Male',
+	  age: 45,
+	  state: 'Bangkok',
+	  children: []
+	}
+)
+
+
  2 - Add another person. They should have at least two children.
+ db.people.insert(
+	{
+	  first_name: 'Joe',
+	  last_name: 'Schmoe',
+	  email: 'JSchmoe@nowhere.com',
+	  gender: 'Male',
+	  age: 59,
+	  state: 'Minnesota',
+	  children: [
+	    {
+	      name: 'Anne',
+	      age: 11
+	    },
+	    {
+	      name: 'Beth',
+	      age: 15
+	    },
+	    {
+	      name: 'Charlie',
+	      age: 17
+	    }
+	  ]
+	}
+)
+
  3 - Update one person named Clarence. He moved from North Dakota to South Dakota.
+ db.people.find(
+ 	{first_name: 'Clarence'}
+ )
+db.people.updateOne(
+   {first_name: 'Clarence'},
+   {
+     $set: { "state": "South Dakota" }
+   }
+)
+
+ db.people.find(
+ 	{first_name: 'Clarence'}
+ )
+
+
  4 - Update Rebecca Hayes. Remove her email address.
+////	There is only one row with a first nme of rebecca, I don't need the last name.
+ db.people.find(
+ 	{$and [
+ 		{first_name: 'Rebecca'},
+ 		{last_name: 'Hayes'}
+ 	] }
+ )
+db.people.updateOne(
+   {first_name: 'Rebecca'},
+   {
+     $set: { "state": "South Dakota" }
+   }
+)
+
+ db.people.find(
+ 	{first_name: 'Rebecca'}
+ )
+
+
+
+
  5 - Update everyone from Missouri. They all had a birthday today, so add one to their age. (expect 4 matches)
  6 - Jerry Baker has updated information. Replace with a new document:
 { first_name: "Jerry", last_name: "Baker-Mendez", email: "jerry@classic.ly", gender:"Male", age: 28, state: "Vermont", "children": [{name: "Alan", age: 18}, {name: "Jenny", age: 3}] }
