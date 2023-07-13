@@ -16,4 +16,12 @@ This project demonstrates a kafka pipeline.
 1. next, start the consumer from the same directory in another command prompt using the command:
    - python ./wiki_consumer.py
 1. finally, run the producer from the same directory in another command prompt using the command:
-   - docker-compose up
+   - python ./wiki_producer.py
+
+## Output - docker
+When the docker containers start, a message will be displayed indicating both sookeeper and kafka are running.
+
+
+## Output - 
+
+## Output - 
